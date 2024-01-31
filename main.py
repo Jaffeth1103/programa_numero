@@ -1,20 +1,22 @@
+import random
+
 class adivina_numero:
-    def __init__(self):
-        self.numero_a_adivinar = 32     
+    def __init__(self, limite_inferior, limite_superior):
+        self.numero_a_adivinar = random.randint(limite_inferior, limite_superior) 
+        self.intentos = 0
 
-        intento = int(input("Dame un numero del 1 al 50:   "))
+    def adivinar(self, numero):
+        self.intentos += 1
 
-        if intento > self.numero_a_adivinar:
-            print("El numero es menor")
-
-        elif intento < self.numero_a_adivinar:
-            print("El numero es mayor") 
-
+        if numero == self.numero_a_adivinar:
+            return f"Adivinaste el número en {self.intentos} intentos."
+        elif numero < self.numero_a_adivinar:
+            return "El número es mayor. Intenta de nuevo."
         else:
-            print("ganaste")    
+            return "El número es menor. Intenta de nuevo."
 
-adivina_numero()
+limite_inferior = 1 
+limite_superior = 50    
+juego = adivina_numero(limite_inferior, limite_superior)
 
-        
-            
 
